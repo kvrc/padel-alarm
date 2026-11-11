@@ -46,6 +46,12 @@ def hole_verfuegbarkeit(datum):
         f"?tenant_id={CLUB_ID}&date={datum}&sport_id=PADEL"
     )
     anfrage = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    anfrage = urllib.request.Request(url, headers={
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "de-DE,de;q=0.9,en;q=0.8",
+        "Referer": f"https://playtomic.com/tenant/{CLUB_ID}",
+    })
     with urllib.request.urlopen(anfrage) as antwort:
         return json.load(antwort)
 
